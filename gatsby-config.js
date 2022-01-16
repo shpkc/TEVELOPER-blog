@@ -83,9 +83,7 @@ module.exports = {
                 name: `images`,
             },
         },
-        {
-            resolve: `gatsby-plugin-sharp`,
-        },
+        `gatsby-plugin-sharp`,
         `gatsby-plugin-image`,
         `gatsby-transformer-sharp`,
         {
