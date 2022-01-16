@@ -52,9 +52,14 @@ module.exports = {
         siteUrl: process.env.SITEURL || config.siteUrl,
     },
     plugins: [
-        /**
-         *  Content Plugins
-         */
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                footnotes: true,
+                gfm: true,
+                plugins: [],
+            },
+        },
         {
             resolve: "gatsby-source-contentful",
             options: {
@@ -78,7 +83,10 @@ module.exports = {
                 name: `images`,
             },
         },
-        `gatsby-plugin-sharp`,
+        {
+            resolve: `gatsby-plugin-sharp`,
+        },
+        `gatsby-plugin-image`,
         `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-source-ghost`,
