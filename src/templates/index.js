@@ -13,16 +13,15 @@ import { Layout, PostCard, Pagination } from "../components/common";
  *
  */
 const Index = ({ data, location, pageContext }) => {
-    const posts = data.allGhostPost.edges;
+    const posts = data.allContentfulBlog.nodes;
 
     return (
         <>
             <Layout isHome={true}>
                 <div className="container">
                     <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
+                        {posts.map((item) => (
+                            <PostCard key={item.id} post={item} />
                         ))}
                     </section>
                     <Pagination pageContext={pageContext} />
@@ -48,6 +47,20 @@ export default Index;
 // The `limit` and `skip` values are used for pagination
 export const pageQuery = graphql`
     query GhostPostQuery($limit: Int!, $skip: Int!) {
+        allContentfulBlog {
+            nodes {
+                id
+                title
+                description
+                slug
+                thumbnail {
+                    id
+                    file {
+                        url
+                    }
+                }
+            }
+        }
         allGhostPost(
             sort: { order: DESC, fields: [published_at] }
             limit: $limit
