@@ -12,7 +12,6 @@ import { Layout } from "../components/common";
  */
 const Post = ({ data }) => {
     const post = data.contentfulBlog;
-    console.log(post);
     return (
         <Layout>
             <div className="container">
