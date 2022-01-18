@@ -57,7 +57,14 @@ module.exports = {
             options: {
                 footnotes: true,
                 gfm: true,
-                plugins: [],
+                plugins: [{ resolve: `gatsby-remark-highlight-code` }],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [`Noto+Sans+KR\:100,300,400,500,700,900`],
+                display: "swap",
             },
         },
         {
