@@ -4,8 +4,9 @@ import { Link } from "gatsby";
 import { Tags } from "@tryghost/helpers-gatsby";
 
 const PostCard = ({ post }) => {
+    console.log(post);
     return (
-        <Link to={`/${post.slug}`} className="post-card">
+        <Link to={`/${post.category}/${post.slug}`} className="post-card">
             <header className="post-card-header">
                 <div
                     className="post-card-image"

@@ -11,14 +11,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         {
-            allContentfulBlog {
+            allContentfulBlog(sort: { order: ASC, fields: createdAt }) {
                 nodes {
                     id
                     title
                     slug
+                    category
+                    category
                     createdAt
                 }
             }
+
             allGhostPost(sort: { order: ASC, fields: published_at }) {
                 edges {
                     node {
@@ -74,14 +77,15 @@ exports.createPages = async ({ graphql, actions }) => {
     const pageTemplate = path.resolve(`./src/templates/page.js`);
     const postTemplate = path.resolve(`./src/templates/post.js`);
 
-    contentfulPosts.forEach(({ title, slug, createdAt }) => {
+    contentfulPosts.forEach(({ title, category, slug, createdAt }) => {
         createPage({
-            path: `/${slug}`,
+            path: `/${category}/${slug}`,
             component: postTemplate,
             context: {
                 title,
                 createdAt,
                 slug,
+                category,
             },
         });
     });
@@ -90,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
     pages.forEach(({ node }) => {
         // This part here defines, that our pages will use
         // a `/:slug/` permalink.
-        node.url = `/${node.slug}/`;
+        node.url = `/${node.category}/${node.slug}/`;
 
         createPage({
             path: node.url,
@@ -98,6 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
             context: {
                 // Data passed to context is available
                 // in page queries as GraphQL variables.
+                category: node.category,
                 slug: node.slug,
             },
         });

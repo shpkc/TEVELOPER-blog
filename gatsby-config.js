@@ -49,9 +49,13 @@ if (
  */
 module.exports = {
     siteMetadata: {
-        siteUrl: process.env.SITEURL || config.siteUrl,
+        title: "teveloper",
+        author: "Park Si Hyung",
+        description: "테니스 치는 개발자",
+        siteUrl: "https://www.teveloper.me",
     },
     plugins: [
+        `gatsby-plugin-sitemap`,
         {
             resolve: `gatsby-transformer-remark`,
             options: {
@@ -90,9 +94,8 @@ module.exports = {
                 name: `images`,
             },
         },
-        `gatsby-plugin-sharp`,
         `gatsby-plugin-image`,
-        `gatsby-transformer-sharp`,
+        `gatsby-plugin-sitemap`,
         {
             resolve: `gatsby-source-ghost`,
             options:
@@ -143,76 +146,6 @@ module.exports = {
                 }
               `,
                 feeds: [generateRSSFeed(config)],
-            },
-        },
-        {
-            resolve: `gatsby-plugin-advanced-sitemap`,
-            options: {
-                query: `
-                {
-                    allGhostPost {
-                        edges {
-                            node {
-                                id
-                                slug
-                                updated_at
-                                created_at
-                                feature_image
-                            }
-                        }
-                    }
-                    allGhostPage {
-                        edges {
-                            node {
-                                id
-                                slug
-                                updated_at
-                                created_at
-                                feature_image
-                            }
-                        }
-                    }
-                    allGhostTag {
-                        edges {
-                            node {
-                                id
-                                slug
-                                feature_image
-                            }
-                        }
-                    }
-                    allGhostAuthor {
-                        edges {
-                            node {
-                                id
-                                slug
-                                profile_image
-                            }
-                        }
-                    }
-                }`,
-                mapping: {
-                    allGhostPost: {
-                        sitemap: `posts`,
-                    },
-                    allGhostTag: {
-                        sitemap: `tags`,
-                    },
-                    allGhostAuthor: {
-                        sitemap: `authors`,
-                    },
-                    allGhostPage: {
-                        sitemap: `pages`,
-                    },
-                },
-                exclude: [
-                    `/dev-404-page`,
-                    `/404`,
-                    `/404.html`,
-                    `/offline-plugin-app-shell-fallback`,
-                ],
-                createLinkInHead: true,
-                addUncaughtPages: true,
             },
         },
         `gatsby-plugin-catch-links`,

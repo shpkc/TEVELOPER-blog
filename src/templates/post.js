@@ -1,21 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Layout } from "../components/common";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 deckDeckGoHighlightElement();
 
-/**
- * Single post view (/:slug)
- *
- * This file renders a single post and loads all the content.
- *
- */
 const Post = ({ data }) => {
     const post = data.contentfulBlog;
     return (
         <Layout>
+            <Helmet title={`${post.title} | teveloper`} defer={false} />
             <div className="container">
                 <article className="content">
                     {post.feature_image ? (

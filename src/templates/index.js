@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import { Layout, PostCard, Pagination } from "../components/common";
+import { Helmet } from "react-helmet";
 
 /**
  * Main index page (home page)
@@ -18,6 +19,7 @@ const Index = ({ data, location, pageContext }) => {
     return (
         <>
             <Layout isHome={true}>
+                <Helmet title="HOME | teveloper" />
                 <div className="container">
                     <section className="post-feed">
                         {posts.map((item) => (
@@ -53,6 +55,7 @@ export const pageQuery = graphql`
                 title
                 description
                 slug
+                category
                 thumbnail {
                     id
                     file {
