@@ -55,7 +55,12 @@ module.exports = {
         siteUrl: "https://www.teveloper.me",
     },
     plugins: [
-        `gatsby-plugin-sitemap`,
+        {
+            resolve: `gatsby-plugin-sitemap`,
+            options: {
+                output: `/sitemap.xml`,
+            },
+        },
         {
             resolve: `gatsby-transformer-remark`,
             options: {
