@@ -95,7 +95,6 @@ module.exports = {
             },
         },
         `gatsby-plugin-image`,
-        `gatsby-plugin-sitemap`,
         {
             resolve: `gatsby-source-ghost`,
             options:
