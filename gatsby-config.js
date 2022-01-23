@@ -56,10 +56,7 @@ module.exports = {
     },
     plugins: [
         {
-            resolve: `gatsby-plugin-sitemap`,
-            options: {
-                output: `/sitemap.xml`,
-            },
+            resolve: `gatsby-plugin-advanced-sitemap`,
         },
         {
             resolve: `gatsby-transformer-remark`,
