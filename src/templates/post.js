@@ -21,14 +21,14 @@ const Post = ({ data }) => {
                     <section className="post-full-content">
                         <h1 className="content-title">{post.title}</h1>
                         {post.youtube && (
-                            <div style={{ marginBottom: 50 }}>
+                            <div class="video-container">
                                 <iframe
                                     width="600"
                                     height="346"
                                     src={`https://www.youtube.com/embed/${post.youtube}`}
                                     title="YouTube video player"
                                     frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen
                                 />
                             </div>
