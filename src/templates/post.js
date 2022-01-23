@@ -7,6 +7,7 @@ deckDeckGoHighlightElement();
 
 const Post = ({ data }) => {
     const post = data.contentfulBlog;
+    console.log(post);
     return (
         <Layout>
             <Helmet title={`${post.title} | teveloper`} defer={false} />
@@ -19,6 +20,19 @@ const Post = ({ data }) => {
                     ) : null}
                     <section className="post-full-content">
                         <h1 className="content-title">{post.title}</h1>
+                        {post.youtube && (
+                            <div style={{ marginBottom: 50 }}>
+                                <iframe
+                                    width="600"
+                                    height="346"
+                                    src={`https://www.youtube.com/embed/${post.youtube}`}
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                />
+                            </div>
+                        )}
                         <section
                             className="content-body load-external-scripts"
                             dangerouslySetInnerHTML={{
@@ -40,6 +54,7 @@ export const postQuery = graphql`
             id
             slug
             title
+            youtube
             content {
                 childMarkdownRemark {
                     html

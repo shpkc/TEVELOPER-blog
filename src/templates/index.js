@@ -19,7 +19,7 @@ const Index = ({ data, location, pageContext }) => {
     return (
         <>
             <Layout isHome={true}>
-                <Helmet title="HOME | teveloper" />
+                <Helmet title="테니스 치는 개발자 | teveloper" />
                 <div className="container">
                     <section className="post-feed">
                         {posts.map((item) => (
@@ -56,6 +56,7 @@ export const pageQuery = graphql`
                 description
                 slug
                 category
+                youtube
                 thumbnail {
                     id
                     file {

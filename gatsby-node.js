@@ -17,11 +17,11 @@ exports.createPages = async ({ graphql, actions }) => {
                     title
                     slug
                     category
+                    youtube
                     category
                     createdAt
                 }
             }
-
             allGhostPost(sort: { order: ASC, fields: published_at }) {
                 edges {
                     node {
