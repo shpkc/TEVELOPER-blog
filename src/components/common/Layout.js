@@ -79,15 +79,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </nav>
                         </div>
                     </header>
-
-                    <main className="site-main">
-                        {/* All the main content gets inserted here, index.js, post.js */}
-                        {children}
-                    </main>
+                    <main className="site-main">{children}</main>
                 </div>
-
                 <div className="viewport-bottom">
-                    {/* The footer at the very bottom of the screen */}
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">

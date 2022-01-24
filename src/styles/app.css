@@ -519,6 +519,11 @@ h6 {
     font-family: var(--font-serif);
 }
 
+.content-body img {
+    display: block;
+    margin: 0 auto;
+}
+
 .post-full-content {
     max-width: 720px;
     margin: 0 auto;
