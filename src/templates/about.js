@@ -1,24 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { Layout, PostCard } from "../components/common";
 import { Helmet } from "react-helmet";
-import { Layout } from "../components/common";
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-deckDeckGoHighlightElement();
 
-const Post = ({ data }) => {
+const About = ({ data }) => {
+    console.log(data);
     const post = data.contentfulBlog;
+
     return (
         <Layout>
-            <Helmet title={`${post.title} | teveloper`} defer={false} />
+            <Helmet title="about | teveloper" />
             <div className="container">
                 <article className="content">
-                    {post.feature_image ? (
-                        <figure className="post-feature-image">
-                            <img src={post.feature_image} alt={post.title} />
-                        </figure>
-                    ) : null}
                     <section className="post-full-content">
-                        <h1 className="content-title">{post.title}</h1>
+                        <h1 className="about-title">
+                            반갑습니다.
+                            <br />
+                            테니스를 사랑하는 개발자, 박시형 입니다.
+                        </h1>
                         {post.youtube && (
                             <div class="video-container">
                                 <iframe
@@ -45,11 +44,11 @@ const Post = ({ data }) => {
     );
 };
 
-export default Post;
+export default About;
 
-export const postQuery = graphql`
-    query MyQuery($slug: String!) {
-        contentfulBlog(slug: { eq: $slug }) {
+export const aboutQuery = graphql`
+    query AboutQuery {
+        contentfulBlog(slug: { eq: "about" }) {
             id
             slug
             title

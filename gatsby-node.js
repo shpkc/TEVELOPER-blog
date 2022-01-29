@@ -29,24 +29,6 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
-            allGhostTag(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
-            allGhostAuthor(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
             allGhostPage(sort: { order: ASC, fields: published_at }) {
                 edges {
                     node {
@@ -63,19 +45,34 @@ exports.createPages = async ({ graphql, actions }) => {
         throw new Error(result.errors);
     }
 
-    // Extract query results
-    const tags = result.data.allGhostTag.edges;
-    const authors = result.data.allGhostAuthor.edges;
-    const pages = result.data.allGhostPage.edges;
     const posts = result.data.allGhostPost.edges;
     const contentfulPosts = result.data.allContentfulBlog.nodes;
 
-    // Load templates
     const indexTemplate = path.resolve(`./src/templates/index.js`);
-    const tagsTemplate = path.resolve(`./src/templates/tag.js`);
-    const authorTemplate = path.resolve(`./src/templates/author.js`);
-    const pageTemplate = path.resolve(`./src/templates/page.js`);
+    const categoryTemplate = path.resolve(`./src/templates/category.js`);
+    const aboutTemplate = path.resolve(`./src/templates/about.js`);
     const postTemplate = path.resolve(`./src/templates/post.js`);
+
+    const defaultPages = [
+        {
+            title: "dev",
+            category: "dev",
+            slug: "dev",
+            component: categoryTemplate,
+        },
+        {
+            title: "tennis",
+            category: "tennis",
+            slug: "tennis",
+            component: categoryTemplate,
+        },
+        {
+            title: "about",
+            category: "about",
+            slug: "about",
+            component: aboutTemplate,
+        },
+    ];
 
     contentfulPosts.forEach(({ title, category, slug, createdAt }) => {
         createPage({
@@ -86,24 +83,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 createdAt,
                 slug,
                 category,
-            },
-        });
-    });
-
-    // Create pages
-    pages.forEach(({ node }) => {
-        // This part here defines, that our pages will use
-        // a `/:slug/` permalink.
-        node.url = `/${node.category}/${node.slug}/`;
-
-        createPage({
-            path: node.url,
-            component: pageTemplate,
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                category: node.category,
-                slug: node.slug,
             },
         });
     });
@@ -121,28 +100,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         },
     });
-
-    // // Create tag pages
-    // tags.forEach(({ node }) => {
-    //     const totalPosts = node.postCount !== null ? node.postCount : 0;
-
-    //     // This part here defines, that our tag pages will use
-    //     // a `/tag/:slug/` permalink.
-    //     const url = `/tag/${node.slug}`;
-
-    //     const items = Array.from({ length: totalPosts });
-
-    //     // Create pagination
-    //     paginate({
-    //         createPage,
-    //         items: items,
-    //         itemsPerPage: postsPerPage,
-    //         component: tagsTemplate,
-    //         pathPrefix: ({ pageNumber }) =>
-    //             pageNumber === 0 ? url : `${url}/page`,
-    //         context: {
-    //             slug: node.slug,
-    //         },
-    //     });
-    // });
+    defaultPages.forEach(({ title, category, slug, component }) => {
+        createPage({
+            path: `/${category}/`,
+            component: component,
+            context: {
+                title,
+                slug,
+                category,
+            },
+        });
+    });
 };
