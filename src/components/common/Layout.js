@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
-import { BsInstagram } from "react-icons/bs";
+import { BsInstagram, BsGithub } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 
 import "../../styles/app.css";
@@ -32,13 +32,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <div className="site-mast-left"></div>
                                 <div className="site-mast-right">
                                     <a
-                                        href="https://www.instagram.com/tevelop_tennis/"
+                                        href="https://github.com/shpkc"
                                         className="site-nav-item"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <BsInstagram color="white" size={20} />
+                                        <BsGithub color="white" size={20} />
                                     </a>
+
                                     <a
                                         href="https://www.linkedin.com/in/%EC%8B%9C%ED%98%95-%EB%B0%95-1a8805211/"
                                         className="site-nav-item"
@@ -46,6 +47,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         rel="noopener noreferrer"
                                     >
                                         <SiLinkedin color="white" size={20} />
+                                    </a>
+                                    <a
+                                        href="https://www.instagram.com/tevelop_tennis/"
+                                        className="site-nav-item"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <BsInstagram color="white" size={20} />
                                     </a>
                                 </div>
                             </div>

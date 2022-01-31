@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 const About = ({ data }) => {
     console.log(data);
-    const post = data.contentfulBlog;
+    const about = data.contentfulAbout;
 
     return (
         <Layout>
@@ -18,23 +18,10 @@ const About = ({ data }) => {
                             <br />
                             테니스를 사랑하는 개발자, 박시형 입니다.
                         </h1>
-                        {post.youtube && (
-                            <div class="video-container">
-                                <iframe
-                                    width="600"
-                                    height="346"
-                                    src={`https://www.youtube.com/embed/${post.youtube}`}
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen
-                                />
-                            </div>
-                        )}
                         <section
                             className="content-body load-external-scripts"
                             dangerouslySetInnerHTML={{
-                                __html: post.content.childMarkdownRemark.html,
+                                __html: about.content.childMarkdownRemark.html,
                             }}
                         />
                     </section>
@@ -48,11 +35,10 @@ export default About;
 
 export const aboutQuery = graphql`
     query AboutQuery {
-        contentfulBlog(slug: { eq: "about" }) {
+        contentfulAbout(title: { eq: "about" }) {
             id
-            slug
             title
-            youtube
+            slug
             content {
                 childMarkdownRemark {
                     html

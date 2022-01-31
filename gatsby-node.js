@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if (result.errors) {
         throw new Error(result.errors);
     }
-
+    const pages = result.data.allGhostPage.edges;
     const posts = result.data.allGhostPost.edges;
     const contentfulPosts = result.data.allContentfulBlog.nodes;
 
@@ -86,7 +86,23 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         });
     });
+    // Create pages
+    pages.forEach(({ node }) => {
+        // This part here defines, that our pages will use
+        // a `/:slug/` permalink.
+        node.url = `/${node.category}/${node.slug}/`;
 
+        createPage({
+            path: node.url,
+            component: pageTemplate,
+            context: {
+                // Data passed to context is available
+                // in page queries as GraphQL variables.
+                category: node.category,
+                slug: node.slug,
+            },
+        });
+    });
     paginate({
         createPage,
         items: posts,
