@@ -19,7 +19,19 @@ const Index = ({ data, location, pageContext }) => {
     return (
         <>
             <Layout isHome={true}>
-                <Helmet title="테니스 치는 개발자 | teveloper" />
+                <Helmet
+                    meta={[
+                        {
+                            property: "title",
+                            content: "테니스 치는 개발자 | teveloper",
+                        },
+                        {
+                            property: "og:image",
+                            content:
+                                "https://images.unsplash.com/photo-1601646761285-65bfa67cd7a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+                        },
+                    ]}
+                />
                 <div className="container">
                     <section className="post-feed">
                         {posts.map((item) => (
