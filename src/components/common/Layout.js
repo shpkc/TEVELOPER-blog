@@ -70,6 +70,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             ) : null}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
+                                    {!isHome && (
+                                        <a class="site-nav-item" href="/">
+                                            Home
+                                        </a>
+                                    )}
                                     <a class="site-nav-item" href="/dev">
                                         Dev
                                     </a>

@@ -13,10 +13,13 @@ const About = ({ data }) => {
             <div className="container">
                 <article className="content">
                     <section className="post-full-content">
+                        <br />
                         <h1 className="about-title">
                             반갑습니다.
                             <br />
-                            테니스를 사랑하는 개발자, 박시형 입니다.
+                            테니스 치는 개발자
+                            <br />
+                            박시형 입니다.
                         </h1>
                         <section
                             className="content-body load-external-scripts"
