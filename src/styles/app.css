@@ -939,12 +939,8 @@ h6 {
 }
 
 .site-foot-nav a {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.site-foot-nav a:hover {
+    color: rgba(255, 255, 255);
     text-decoration: none;
-    color: rgba(255, 255, 255, 1);
 }
 
 .site-foot-nav-right a {

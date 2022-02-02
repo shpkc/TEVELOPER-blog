@@ -98,7 +98,19 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">
-                                <Link to="/">© 2022 Teveloper</Link>
+                                <Link to="/">
+                                    ©Teveloper
+                                    <span
+                                        style={{
+                                            color: "#aaaaaa",
+                                            margin: "0 5px",
+                                            fontSize: "0.9rem",
+                                        }}
+                                    >
+                                        built with
+                                    </span>
+                                    Gatsby
+                                </Link>
                             </div>
                         </div>
                     </footer>
