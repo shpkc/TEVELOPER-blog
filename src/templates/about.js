@@ -4,7 +4,6 @@ import { Layout, PostCard } from "../components/common";
 import { Helmet } from "react-helmet";
 
 const About = ({ data }) => {
-    console.log(data);
     const about = data.contentfulAbout;
 
     return (
@@ -17,7 +16,7 @@ const About = ({ data }) => {
                         <h1 className="about-title">
                             반갑습니다.
                             <br />
-                            테니스 치는 개발자
+                            프론트엔드 개발자
                             <br />
                             박시형 입니다.
                         </h1>
