@@ -31,14 +31,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <div className="site-mast">
                                 <div className="site-mast-left"></div>
                                 <div className="site-mast-right">
-                                    {/* <a
+                                    <a
                                         href="https://github.com/shpkc"
                                         className="site-nav-item"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <BsGithub color="white" size={20} />
-                                    </a> */}
+                                    </a>
                                     <a
                                         href="https://www.linkedin.com/in/%EC%8B%9C%ED%98%95-%EB%B0%95-1a8805211/"
                                         className="site-nav-item"
