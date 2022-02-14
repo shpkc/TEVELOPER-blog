@@ -567,6 +567,11 @@ h6 {
     line-height: 1.5;
 }
 
+.content-createdAt {
+    color: #7d7d7d;
+    margin: 0 0 20px 0;
+}
+
 .content-body h2 {
     margin: 0.8em 0 0.4em 0;
     font-size: 2.5rem;

@@ -7,6 +7,7 @@ deckDeckGoHighlightElement();
 
 const Post = ({ data }) => {
     const post = data.contentfulBlog;
+
     return (
         <Layout>
             <Helmet title={`${post.title} | teveloper`} defer={false} />
@@ -19,6 +20,9 @@ const Post = ({ data }) => {
                     ) : null}
                     <section className="post-full-content">
                         <h1 className="content-title">{post.title}</h1>
+                        <p className="content-createdAt">
+                            {post.createdAt.slice(0, 10).replace(/-/gi, ".")}
+                        </p>
                         {post.youtube && (
                             <div class="video-container">
                                 <iframe
@@ -54,6 +58,7 @@ export const postQuery = graphql`
             slug
             title
             youtube
+            createdAt
             content {
                 childMarkdownRemark {
                     html

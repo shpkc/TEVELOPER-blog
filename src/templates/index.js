@@ -4,7 +4,6 @@ import { Layout, PostCard, Pagination } from "../components/common";
 
 const Index = ({ data, pageContext }) => {
     const posts = data.allContentfulBlog.nodes;
-
     return (
         <>
             <Layout isHome={true}>
