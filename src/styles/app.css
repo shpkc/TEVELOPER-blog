@@ -754,13 +754,14 @@ h6 {
 .post-feed {
     display: grid;
     justify-content: space-between;
-    grid-gap: 30px;
+    grid-gap: 50px 30px;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media (max-width: 680px) {
     .post-feed {
         grid-template-columns: 1fr;
+        grid-gap: 30px;
     }
 }
 
