@@ -41,6 +41,7 @@ what's here to work the way you'd like it to.
     --height: 4rem;
     --margin: 2rem;
     --radius: 0.6rem;
+    --deckgo-highlight-code-white-space: pre;
 }
 
 /* Reset
@@ -563,6 +564,7 @@ h6 {
 .content-title {
     margin: 0 0 0.8em;
     font-size: 2rem;
+    line-height: 1.5;
 }
 
 .content-body h2 {
@@ -1127,4 +1129,10 @@ h6 {
         font-size: 4rem;
         line-height: 1.3;
     }
+}
+.--deckgo-highlight-code-white-space {
+    white-space: pre;
+}
+img[src*="gif"] {
+    width: 300px;
 }
