@@ -8,7 +8,13 @@ const About = ({ data }) => {
 
     return (
         <Layout>
-            <Helmet title="about | teveloper" />
+            <Helmet>
+                <title>about | teveloper</title>
+                <meta
+                    property="og:image"
+                    content="https://i.imgur.com/XhRRdDV.jpeg"
+                ></meta>
+            </Helmet>
             <div className="container">
                 <article className="content">
                     <section className="post-full-content">
